@@ -13,7 +13,7 @@ pipeline {
     }
     stage('DEPLOY') {
       steps {
-        sh 'dockerstop myapp'
+        sh 'docker stop myapp'
         sh 'docker rm -f myapp'
 	sh 'docker run -d -p 5000:80 --name myapp aspnetcoreapp'
       }
