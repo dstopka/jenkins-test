@@ -2,7 +2,6 @@
  services:
   mongo:
     image: mongo
-    container_name: myapp_mongo
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
@@ -11,7 +10,6 @@
       - 27017:27017
   mongo-express:
     image: mongo-express
-    container_name: myapp_mongo_express
     restart: always
     ports:
       - 8081:8081
