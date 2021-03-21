@@ -3,8 +3,8 @@ WORKDIR /app
 
 RUN npm install -g @angular/cli
 
-COPY ./package.json .
+COPY ./ClientApp/package.json .
 RUN npm install
-COPY . .
+COPY ./ClientApp .
 
 CMD ng serve
