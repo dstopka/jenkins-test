@@ -14,10 +14,8 @@ pipeline {
     }
     stage('DEPLOY') {
       steps {
-        sh 'docker stop myapp'
-        sh 'docker rm -f myapp'
-        sh 'docker stop myapp_frontend'
-        sh 'docker rm -f myapp_frontend'
+        sh 'docker stop myapp || true && docker rm -f myapp || true'
+        sh 'docker stop myapp_frontend || true && docker rm -f myapp_frontend || true'
         sh 'docker-compose up'
       }
     }
