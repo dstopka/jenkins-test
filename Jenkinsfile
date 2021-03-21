@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('BUILD') {
       steps {
-        sh 'docker build -t aspnetcoreapp .'
+        sh 'docker build --rm -t aspnetcoreapp -f ./WebApiTest/Dockerfile .'
+        sh 'docker build --rm -t frontendapp -f ./ClientApp/Dockerfile .'
       }
       post {
         failure {

@@ -21,9 +21,7 @@
     depends_on:
       - mongo
   myapp:
-    build:
-      context: ./WebApiTest
-      dockerfile: Dockerfile
+    image: aspnetcoreapp
     container_name: myapp
     restart: always
     ports:
@@ -33,9 +31,7 @@
     depends_on:
       - mongo
   client:
-    build:
-      context: ./ClientApp
-      dockerfile: Dockerfile
+    image: frontendapp
     container_name: myapp_frontend
     restart: always
     ports:
