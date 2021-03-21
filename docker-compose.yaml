@@ -21,7 +21,9 @@
     depends_on:
       - mongo
   myapp:
-    build: .
+    build:
+      context: ./WebApiTest
+      dockerfile: Dockerfile
     container_name: myapp
     restart: always
     ports:
@@ -30,3 +32,13 @@
       MongoDB__Host: mongo
     depends_on:
       - mongo
+  client:
+    build:
+      context: ./ClientApp
+      dockerfile: Dockerfile
+    container_name: myapp_frontend
+    restart: always
+    ports:
+      - 4200:80
+    depends_on:
+      - myapp

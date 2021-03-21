@@ -15,6 +15,8 @@ pipeline {
       steps {
         sh 'docker stop myapp'
         sh 'docker rm -f myapp'
+        sh 'docker stop myapp_frontend'
+        sh 'docker rm -f myapp_frontend'
         sh 'docker-compose up'
       }
     }

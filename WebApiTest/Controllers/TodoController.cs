@@ -31,17 +31,18 @@ namespace WebApiTest.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Todo>> Get(long id)
         {
-            var todo = await _repo.GetTodo(id);            if (todo == null)
+            var todo = await _repo.GetTodo(id);            
+            if (todo == null)
                 return new NotFoundResult();
             
             return new ObjectResult(todo);
         }        
         
         // POST api/todos
-        [HttpPost]
+        [HttpPost()]
         public async Task<ActionResult<Todo>> Post([FromBody] Todo todo)
         {
-            todo.Id = await _repo.GetNextId();
+            todo.TodoId = await _repo.GetNextId();
             await _repo.Create(todo);
             return new OkObjectResult(todo);
         }        
@@ -50,17 +51,24 @@ namespace WebApiTest.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<Todo>> Put(long id, [FromBody] Todo todo)
         {
-            var todoFromDb = await _repo.GetTodo(id);            if (todoFromDb == null)
-                return new NotFoundResult();            todo.Id = todoFromDb.Id;
-            todo.InternalId = todoFromDb.InternalId;            await _repo.Update(todo);            return new OkObjectResult(todo);
+            var todoFromDb = await _repo.GetTodo(id);            
+            if (todoFromDb == null)
+                return new NotFoundResult();            
+            todo.TodoId = todoFromDb.TodoId;
+            todo.InternalId = todoFromDb.InternalId;            
+            await _repo.Update(todo);            
+            return new OkObjectResult(todo);
         }        
         
         // DELETE api/todos/1
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id)
         {
-            var post = await _repo.GetTodo(id);            if (post == null)
-                return new NotFoundResult();            await _repo.Delete(id);            return new OkResult();
+            var post = await _repo.GetTodo(id);            
+            if (post == null)
+                return new NotFoundResult();            
+            await _repo.Delete(id);            
+            return new OkResult();
         }
     }
 }

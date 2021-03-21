@@ -23,10 +23,10 @@
         <option value="$PROJECT_DIR$/Models/Todo.cs" />
         <option value="$PROJECT_DIR$/Models/ITodoRepository.cs" />
         <option value="$PROJECT_DIR$/Models/TodoRepository.cs" />
-        <option value="$PROJECT_DIR$/Controllers/TodoController.cs" />
         <option value="$PROJECT_DIR$/Models/TodoContext.cs" />
         <option value="$PROJECT_DIR$/appsettings.json" />
         <option value="$PROJECT_DIR$/Startup.cs" />
+        <option value="$PROJECT_DIR$/Controllers/TodoController.cs" />
       </list>
     </option>
   </component>
@@ -87,7 +87,7 @@
       <workItem from="1616267275990" duration="413000" />
       <workItem from="1616267793894" duration="503000" />
       <workItem from="1616268409564" duration="109000" />
-      <workItem from="1616268660349" duration="656000" />
+      <workItem from="1616268660349" duration="7758000" />
     </task>
     <servers />
   </component>
@@ -100,22 +100,22 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1358" height="262" key="GridCell.Tab.0.bottom" timestamp="1616269320843">
+    <state width="1157" height="262" key="GridCell.Tab.0.bottom" timestamp="1616328786731">
       <screen x="768" y="0" width="2560" height="1440" />
     </state>
-    <state width="1358" height="262" key="GridCell.Tab.0.bottom/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616269320843" />
-    <state width="1358" height="262" key="GridCell.Tab.0.center" timestamp="1616269320843">
+    <state width="1157" height="262" key="GridCell.Tab.0.bottom/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616328786731" />
+    <state width="1157" height="262" key="GridCell.Tab.0.center" timestamp="1616328786731">
       <screen x="768" y="0" width="2560" height="1440" />
     </state>
-    <state width="1358" height="262" key="GridCell.Tab.0.center/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616269320843" />
-    <state width="1358" height="262" key="GridCell.Tab.0.left" timestamp="1616269320843">
+    <state width="1157" height="262" key="GridCell.Tab.0.center/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616328786731" />
+    <state width="1157" height="262" key="GridCell.Tab.0.left" timestamp="1616328786731">
       <screen x="768" y="0" width="2560" height="1440" />
     </state>
-    <state width="1358" height="262" key="GridCell.Tab.0.left/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616269320843" />
-    <state width="1358" height="262" key="GridCell.Tab.0.right" timestamp="1616269320843">
+    <state width="1157" height="262" key="GridCell.Tab.0.left/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616328786731" />
+    <state width="1157" height="262" key="GridCell.Tab.0.right" timestamp="1616328786731">
       <screen x="768" y="0" width="2560" height="1440" />
     </state>
-    <state width="1358" height="262" key="GridCell.Tab.0.right/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616269320843" />
+    <state width="1157" height="262" key="GridCell.Tab.0.right/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616328786731" />
     <state x="1897" y="375" key="SettingsEditor" timestamp="1616269240112">
       <screen x="768" y="0" width="2560" height="1440" />
     </state>

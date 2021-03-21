@@ -25,7 +25,7 @@ namespace WebApiTest.Models
         
         public Task<Todo> GetTodo(long id)
         {
-            FilterDefinition<Todo> filter = Builders<Todo>.Filter.Eq(m => m.Id, id);
+            FilterDefinition<Todo> filter = Builders<Todo>.Filter.Eq(m => m.TodoId, id);
             return _context
                 .Todos
                 .Find(filter)
@@ -43,7 +43,7 @@ namespace WebApiTest.Models
                 await _context
                     .Todos
                     .ReplaceOneAsync(
-                        filter: g => g.Id == todo.Id,
+                        filter: g => g.TodoId == todo.TodoId,
                         replacement: todo);
             return updateResult.IsAcknowledged
                    && updateResult.ModifiedCount > 0;
@@ -51,7 +51,7 @@ namespace WebApiTest.Models
         
         public async Task<bool> Delete(long id)
         {
-            FilterDefinition<Todo> filter = Builders<Todo>.Filter.Eq(m => m.Id, id);
+            FilterDefinition<Todo> filter = Builders<Todo>.Filter.Eq(m => m.TodoId, id);
             DeleteResult deleteResult = await _context
                 .Todos
                 .DeleteOneAsync(filter);

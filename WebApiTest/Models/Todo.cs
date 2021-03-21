@@ -6,7 +6,7 @@ namespace WebApiTest.Models
     {
         [BsonId]
         public ObjectId InternalId { get; set; }
-        public long Id { get; set; }
+        public long TodoId { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
     }

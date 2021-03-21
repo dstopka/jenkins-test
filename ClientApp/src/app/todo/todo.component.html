@@ -1,0 +1,7 @@
+<ng-container *ngIf="(todo$ | async) as todo; else loading">
+
+    <h1>{{ todo.title }}</h1>
+    <div>{{ todo.content }}</div>
+  
+  </ng-container>
+  <ng-template #loading>Loading…</ng-template>
