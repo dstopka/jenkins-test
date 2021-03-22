@@ -18,7 +18,7 @@ pipeline {
         sh 'docker stop myapp_frontend || true && docker rm -f myapp_frontend || true'
         sh 'docker stop myapp_mongo || true && docker rm -f myapp_mongo || true'
         sh 'docker stop myapp_mongo_express || true && docker rm -f myapp_mongo_express || true'
-        sh 'docker-compose -d up'
+        sh 'docker-compose up -d'
       }
     }
   }
