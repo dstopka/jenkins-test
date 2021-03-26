@@ -14,11 +14,9 @@ pipeline {
     }
     stage('DEPLOY') {
       steps {
-        sh 'docker stop myapp || true && docker rm -f myapp || true'
-        sh 'docker stop myapp_frontend || true && docker rm -f myapp_frontend || true'
-        sh 'docker stop myapp_mongo || true && docker rm -f myapp_mongo || true'
-        sh 'docker stop myapp_mongo_express || true && docker rm -f myapp_mongo_express || true'
-        sh 'docker-compose up -d'
+        sh 'docker-compose -f ./docker-compose.yaml down || true'
+        sh 'docker-compose -f ./docker-compose-mongo.yaml down || true'
+        sh 'docker-compose -f ./docker-compose-mongo.yaml -f ./docker-compose.yaml up -d'
       }
     }
   }
