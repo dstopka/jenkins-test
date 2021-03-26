@@ -69,7 +69,7 @@ namespace WebApiTest
 
             app.UseCors();
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
