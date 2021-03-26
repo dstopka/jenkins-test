@@ -66,6 +66,8 @@ namespace WebApiTest
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("CorsPolicy");
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -77,8 +79,6 @@ namespace WebApiTest
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-            
-            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             
