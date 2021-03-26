@@ -47,7 +47,14 @@ namespace WebApiTest
                 });
             });
             
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:8888").AllowAnyHeader().AllowAnyMethod();
+                    });
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -60,9 +67,7 @@ namespace WebApiTest
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(
-                options => options.SetIsOriginAllowed(x => _ = true).AllowAnyMethod().AllowAnyHeader().AllowCredentials()
-            );
+            app.UseCors();
 
             app.UseHttpsRedirection();
 
