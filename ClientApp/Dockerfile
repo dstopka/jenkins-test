@@ -8,11 +8,7 @@ COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
 
-RUN npm run build -- --verbose --prod
-
-RUN apt-get install tree
-
-RUN tree
+RUN npm run build -- --verbose --env=prod
 
 FROM nginx
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -20,6 +16,5 @@ COPY nginx.conf /etc/nginx/nginx.conf
 RUN rm -rf /usr/share/nginx/html/*
 
 COPY --from=build /app/dist/ClientApp /usr/share/nginx/html
-
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
