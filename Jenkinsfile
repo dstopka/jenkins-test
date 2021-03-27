@@ -1,14 +1,12 @@
 pipeline {
-  environment {
-      apiImage = ''
-  }
+
   agent any
   stages {
     stage('Build') {
         steps {
             dir('WebApiTest') {
                 script {
-                    apiImage = docker.build("api-test:${env.BUILD_ID}", "-f ./Dockerfile.build .")
+                    docker.build("api-test:${env.BUILD_ID}", "-f ./Dockerfile.build .")
                 }
             }
             dir('ClientApp') {
@@ -24,7 +22,7 @@ pipeline {
     stage('Test') {
         steps {
             script {
-                apiImage {
+                adocker.image("api-test:${env.BUILD_ID}") {
                     sh 'cd /app/Test'
                     sh 'docker test'
                 }
