@@ -1,4 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
   appUrl: 'http://myapp_api:5000/'
 };
