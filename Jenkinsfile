@@ -8,7 +8,7 @@ pipeline {
         steps {
             dir('WebApiTest') {
                 script {
-                    apiImage = docker.build("api-test:${env.BUILD_ID}", "-f ./Dockerfile.build")
+                    apiImage = docker.build("api-test:${env.BUILD_ID}", "-f ./Dockerfile.build .")
                 }
             }
             dir('ClientApp') {
