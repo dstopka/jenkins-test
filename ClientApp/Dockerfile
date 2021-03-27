@@ -10,8 +10,9 @@ COPY . .
 
 RUN npm run build -- --verbose --prod
 
-RUN ls -la
-RUN ls -la ./app
+RUN apt-get install tree
+
+RUN tree
 
 FROM nginx
 COPY nginx.conf /etc/nginx/nginx.conf
