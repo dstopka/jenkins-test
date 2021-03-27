@@ -8,9 +8,14 @@ COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
 
-RUN ng build
+RUN npm run build --prod
 
 FROM nginx
-RUN apt-get update && apt-get install -y curl && apt-get clean
 COPY nginx.conf /etc/nginx/nginx.conf
+
+RUN rm -rf /usr/share/nginx/html/*
+
 COPY --from=build /app/dist/ClientApp /usr/share/nginx/html
+
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
