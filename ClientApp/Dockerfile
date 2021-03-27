@@ -8,7 +8,7 @@ COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
 
-RUN npm run build -- --verbose --env=prod
+RUN npm run build -- --configuration=prod
 
 FROM nginx
 COPY nginx.conf /etc/nginx/nginx.conf
