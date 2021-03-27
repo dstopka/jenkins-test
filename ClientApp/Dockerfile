@@ -10,6 +10,9 @@ COPY . .
 
 RUN npm run build -- --prod
 
+RUN ls -la
+RUN ls -la ./app
+
 FROM nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 
