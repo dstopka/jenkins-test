@@ -1,0 +1,11 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1
+WORKDIR /app
+
+COPY *.sln .
+COPY WebApiTest/*.csproj ./WebApiTest/
+COPY Test/*.csproj ./Test/
+RUN dotnet restore
+
+COPY . ./
+RUN dotnet build
+

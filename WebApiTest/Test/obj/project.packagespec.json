@@ -1,0 +1,71 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/home/dotnet/WebApiTest/Test/Test.csproj",
+    "projectName": "Test",
+    "projectPath": "/home/dotnet/WebApiTest/Test/Test.csproj",
+    "outputPath": "/home/dotnet/WebApiTest/Test/obj/",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "netcoreapp3.1"
+    ],
+    "sources": {
+      "https://api.nuget.org/v3/index.json": {}
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "projectReferences": {
+          "/home/dotnet/WebApiTest/WebApiTest/WebApiTest.csproj": {
+            "projectPath": "/home/dotnet/WebApiTest/WebApiTest/WebApiTest.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp3.1": {
+      "dependencies": {
+        "Microsoft.NET.Test.Sdk": {
+          "target": "Package",
+          "version": "[16.5.0, )"
+        },
+        "coverlet.collector": {
+          "target": "Package",
+          "version": "[1.2.0, )"
+        },
+        "xunit": {
+          "target": "Package",
+          "version": "[2.4.0, )"
+        },
+        "xunit.runner.visualstudio": {
+          "target": "Package",
+          "version": "[2.4.0, )"
+        }
+      },
+      "imports": [
+        "net461",
+        "net462",
+        "net47",
+        "net471",
+        "net472",
+        "net48"
+      ],
+      "assetTargetFallback": true,
+      "warn": true,
+      "frameworkReferences": {
+        "Microsoft.AspNetCore.App": {
+          "privateAssets": "none"
+        },
+        "Microsoft.NETCore.App": {
+          "privateAssets": "all"
+        }
+      },
+      "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
+    }
+  }
+}

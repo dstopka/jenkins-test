@@ -1,27 +1,40 @@
 pipeline {
+  environment {
+      apiImage = ''
+  }
   agent any
   stages {
-    stage('BUILD') {
-      steps {
-        dir('WebApiTest') {
-          sh 'docker build --rm -t aspnetcoreapp .'
+    stage('Build') {
+        steps {
+            dir('WebApiTest') {
+                script {
+                    apiImage = docker.build("api-test:${env.BUILD_ID}", "-f ./Dockerfile.build")
+                }
+            }
+            dir('ClientApp') {
+                sh 'docker build --rm -t frontendapp .'
+            }
         }
-        dir('ClientApp') {
-          sh 'docker build --rm -t frontendapp .'
+        post {
+            failure {
+                echo 'This build has failed. See logs for details.'
+            }
         }
-      }
-      post {
-        failure {
-            echo 'This build has failed. See logs for details.'
-        }
-      }
     }
-    stage('DEPLOY') {
-      steps {
-        sh 'docker-compose -f ./docker-compose-mongo.yaml down || true'
-        sh 'docker-compose -f ./docker-compose.yaml down || true'
-        sh 'docker-compose -f ./docker-compose-mongo.yaml -f ./docker-compose.yaml up -d'
-      }
+    stage('Test') {
+        steps {
+            script {
+                apiImage {
+                    sh 'cd /app/Test'
+                    sh 'docker test'
+                }
+            }
+        }
+        post {
+            failure {
+                echo 'Tests failed. See logs for details.'
+            }
+        }        
     }
   }
 }

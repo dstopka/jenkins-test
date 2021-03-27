@@ -20,13 +20,19 @@
         <option value="$PROJECT_DIR$/ServerConfig.cs" />
         <option value="$PROJECT_DIR$/MongoDBConfig.cs" />
         <option value="$PROJECT_DIR$/Models/ITodoContext.cs" />
-        <option value="$PROJECT_DIR$/Models/Todo.cs" />
         <option value="$PROJECT_DIR$/Models/ITodoRepository.cs" />
         <option value="$PROJECT_DIR$/Models/TodoRepository.cs" />
         <option value="$PROJECT_DIR$/Models/TodoContext.cs" />
         <option value="$PROJECT_DIR$/appsettings.json" />
         <option value="$PROJECT_DIR$/Startup.cs" />
         <option value="$PROJECT_DIR$/Controllers/TodoController.cs" />
+        <option value="$PROJECT_DIR$/Models/Todo.cs" />
+        <option value="$PROJECT_DIR$/Models/Todo/ITodoContext.cs" />
+        <option value="$PROJECT_DIR$/Models/Todo/TodoContext.cs" />
+        <option value="$PROJECT_DIR$/Models/Todo/TodoRepository.cs" />
+        <option value="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/WebApiTest.AssemblyInfo.cs" />
+        <option value="$PROJECT_DIR$/Test/UnitTest1.cs" />
+        <option value="$PROJECT_DIR$/Test/TodoTest.cs" />
       </list>
     </option>
   </component>
@@ -39,13 +45,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/WebApiTest/WebApiTest.csproj" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.WebApiTest">
     <configuration name="WebApiTest" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApiTest.csproj" />
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApiTest/WebApiTest.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v3.1" />
       <option name="LAUNCH_PROFILE_NAME" value="WebApiTest" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -74,6 +81,10 @@
         <option name="Build" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue=".NET Launch Settings Profile.WebApiTest" />
+      <item itemvalue=".NET Launch Settings Profile.WebApiTest: IIS Express" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -87,7 +98,8 @@
       <workItem from="1616267275990" duration="413000" />
       <workItem from="1616267793894" duration="503000" />
       <workItem from="1616268409564" duration="109000" />
-      <workItem from="1616268660349" duration="7758000" />
+      <workItem from="1616268660349" duration="8560000" />
+      <workItem from="1616877211247" duration="2210000" />
     </task>
     <servers />
   </component>
@@ -100,25 +112,37 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1157" height="262" key="GridCell.Tab.0.bottom" timestamp="1616328786731">
+    <state x="1494" y="412" width="1071" height="708" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1616882286625">
       <screen x="768" y="0" width="2560" height="1440" />
     </state>
-    <state width="1157" height="262" key="GridCell.Tab.0.bottom/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616328786731" />
-    <state width="1157" height="262" key="GridCell.Tab.0.center" timestamp="1616328786731">
+    <state x="1494" y="412" width="1071" height="708" key="#com.intellij.execution.impl.EditConfigurationsDialog/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616882286625" />
+    <state x="1640" y="485" key="FileChooserDialogImpl" timestamp="1616878721542">
       <screen x="768" y="0" width="2560" height="1440" />
     </state>
-    <state width="1157" height="262" key="GridCell.Tab.0.center/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616328786731" />
-    <state width="1157" height="262" key="GridCell.Tab.0.left" timestamp="1616328786731">
+    <state x="1640" y="485" key="FileChooserDialogImpl/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616878721542" />
+    <state width="1505" height="306" key="GridCell.Tab.0.bottom" timestamp="1616878795631">
       <screen x="768" y="0" width="2560" height="1440" />
     </state>
-    <state width="1157" height="262" key="GridCell.Tab.0.left/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616328786731" />
-    <state width="1157" height="262" key="GridCell.Tab.0.right" timestamp="1616328786731">
+    <state width="1505" height="306" key="GridCell.Tab.0.bottom/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616878795631" />
+    <state width="1505" height="306" key="GridCell.Tab.0.center" timestamp="1616878795630">
       <screen x="768" y="0" width="2560" height="1440" />
     </state>
-    <state width="1157" height="262" key="GridCell.Tab.0.right/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616328786731" />
-    <state x="1897" y="375" key="SettingsEditor" timestamp="1616269240112">
+    <state width="1505" height="306" key="GridCell.Tab.0.center/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616878795630" />
+    <state width="1505" height="306" key="GridCell.Tab.0.left" timestamp="1616878795630">
       <screen x="768" y="0" width="2560" height="1440" />
     </state>
-    <state x="1897" y="375" key="SettingsEditor/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616269240112" />
+    <state width="1505" height="306" key="GridCell.Tab.0.left/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616878795630" />
+    <state width="1505" height="306" key="GridCell.Tab.0.right" timestamp="1616878795630">
+      <screen x="768" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1505" height="306" key="GridCell.Tab.0.right/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616878795630" />
+    <state x="1648" y="455" key="Rider.ProjectTemplateDialog.Size" timestamp="1616878225240">
+      <screen x="768" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1648" y="455" key="Rider.ProjectTemplateDialog.Size/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616878225240" />
+    <state x="1897" y="375" key="SettingsEditor" timestamp="1616877584641">
+      <screen x="768" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1897" y="375" key="SettingsEditor/768.0.2560.1440/0.208.768.1024@768.0.2560.1440" timestamp="1616877584641" />
   </component>
 </project>
