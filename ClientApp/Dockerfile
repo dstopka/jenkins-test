@@ -8,7 +8,7 @@ COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
 
-RUN npm run build -- --prod
+RUN npm run build -- --verbose --prod
 
 RUN ls -la
 RUN ls -la ./app
