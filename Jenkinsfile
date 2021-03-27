@@ -26,7 +26,7 @@ pipeline {
             script {
                 apiImage.inside {
                     sh 'cd /app/Test'
-                    sh 'docker test'
+                    sh 'dotnet test'
                 }
             }
         }
