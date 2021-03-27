@@ -22,7 +22,7 @@ pipeline {
     stage('Test') {
         steps {
             script {
-                adocker.image("api-test:${env.BUILD_ID}") {
+                docker.image("api-test:${env.BUILD_ID}") {
                     sh 'cd /app/Test'
                     sh 'docker test'
                 }
