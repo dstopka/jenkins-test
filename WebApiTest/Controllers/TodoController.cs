@@ -9,7 +9,6 @@ namespace WebApiTest.Controllers
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;    
     
-    [EnableCors("CorsPolicy")]
     [Produces("application/json")]
     [Route("api/[Controller]")]
     public class TodosController: Controller
