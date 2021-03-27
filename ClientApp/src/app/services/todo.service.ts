@@ -23,7 +23,7 @@ export class TodoService {
   }
 
   getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.myAppUrl + this.myApiUrl)
+    return this.http.get<Todo[]>(this.myAppUrl + this.myApiUrl, { withCredentials: true })
     .pipe(
       retry(1),
       catchError(this.errorHandler)
@@ -31,7 +31,7 @@ export class TodoService {
   }
 
   getTodo(postId: number): Observable<Todo> {
-      return this.http.get<Todo>(this.myAppUrl + this.myApiUrl + postId)
+      return this.http.get<Todo>(this.myAppUrl + this.myApiUrl + postId, { withCredentials: true })
       .pipe(
         retry(1),
         catchError(this.errorHandler)
