@@ -2,20 +2,15 @@ FROM node:14.2.0-alpine3.11 AS build
 
 WORKDIR /app
 
-RUN npm install -g @angular/cli
+RUN npm install -g @angular/cli@^10
 
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
 
-RUN npm run build -- --verbose --configuration=production
+RUN npm run build --prod
 
-FROM nginx
-
+FROM nginx:alpine as deploy
 COPY nginx.conf /etc/nginx/nginx.conf
-
 RUN rm -rf /usr/share/nginx/html/*
-
 COPY --from=build /app/dist/ClientApp /usr/share/nginx/html
-
-ENTRYPOINT ["nginx", "-g", "daemon off;"]

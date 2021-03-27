@@ -65,8 +65,7 @@ namespace WebApiTest
             app.UseRouting();
             app.UseCors(builder => builder
                        .AllowAnyOrigin()
-                       .AllowAnyMethod()
-                       .AllowCredentials());
+                       .AllowAnyMethod());
             app.UseAuthorization();
             
             app.UseSwagger();

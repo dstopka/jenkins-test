@@ -18,12 +18,11 @@ export class TodoService {
     })
   };
   constructor(private http: HttpClient) {
-      this.myAppUrl = environment.appUrl;
       this.myApiUrl = 'api/todos/';
   }
 
   getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.myAppUrl + this.myApiUrl, { withCredentials: true })
+    return this.http.get<Todo[]>(this.myApiUrl, { withCredentials: true })
     .pipe(
       retry(1),
       catchError(this.errorHandler)
@@ -31,7 +30,7 @@ export class TodoService {
   }
 
   getTodo(postId: number): Observable<Todo> {
-      return this.http.get<Todo>(this.myAppUrl + this.myApiUrl + postId, { withCredentials: true })
+      return this.http.get<Todo>(this.myApiUrl + postId, { withCredentials: true })
       .pipe(
         retry(1),
         catchError(this.errorHandler)
@@ -39,7 +38,7 @@ export class TodoService {
   }
 
   saveTodo(todo): Observable<Todo> {
-      return this.http.post<Todo>(this.myAppUrl + this.myApiUrl, JSON.stringify(todo), this.httpOptions)
+      return this.http.post<Todo>(this.myApiUrl, JSON.stringify(todo), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
@@ -47,7 +46,7 @@ export class TodoService {
   }
 
   updateTodo(postId: number, todo): Observable<Todo> {
-      return this.http.put<Todo>(this.myAppUrl + this.myApiUrl + postId, JSON.stringify(todo), this.httpOptions)
+      return this.http.put<Todo>(this.myApiUrl + postId, JSON.stringify(todo), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
@@ -55,7 +54,7 @@ export class TodoService {
   }
 
   deleteTodo(postId: number): Observable<Todo> {
-      return this.http.delete<Todo>(this.myAppUrl + this.myApiUrl + postId)
+      return this.http.delete<Todo>(this.myApiUrl + postId)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
