@@ -8,7 +8,7 @@ COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
 
-RUN npm run build --prod --configuration=production
+RUN ng build --prod
 
 FROM nginx
 RUN apt-get update && apt-get install -y curl && apt-get clean
