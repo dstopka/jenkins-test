@@ -64,7 +64,7 @@ namespace WebApiTest
 
             app.UseRouting();
             app.UseCors(builder =>
-                builder.WithOrigins("http://165.22.206.21:8888")
+                builder.WithOrigins("http://165.22.206.21:8888", "http://myapp_client:8888")
                        .AllowAnyMethod()
                        .AllowCredentials());
             app.UseAuthorization();
