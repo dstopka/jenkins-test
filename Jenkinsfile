@@ -8,7 +8,7 @@ pipeline {
         steps {
             dir('WebApiTest') {
                 script {
-                    apiImage = docker.build("api-test:${env.BUILD_ID}", "-f ./Dockerfile.build .")
+                    docker.build("api-test:${env.BUILD_ID}", "-f ./Dockerfile.build .")
                 }
             }
             dir('ClientApp') {
@@ -23,13 +23,7 @@ pipeline {
     }
     stage('Test') {
         steps {
-            script {
-                apiImage.inside {
-                    sh 'cd /app/Test'
-                    sh 'ls -la'
-                    sh 'dotnet test'
-                }
-            }
+            sh "docker run api-test:${env.BUILD_ID}"
         }
         post {
             failure {
