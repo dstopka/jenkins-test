@@ -1,6 +1,9 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1
 WORKDIR /app
 
+ARG dotnet_cli_home_arg=/tmp/
+ENV DOTNET_CLI_HOME=$dotnet_cli_home_arg
+
 COPY *.sln .
 COPY WebApiTest/*.csproj ./WebApiTest/
 COPY Test/*.csproj ./Test/
