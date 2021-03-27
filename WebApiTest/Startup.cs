@@ -36,6 +36,8 @@ namespace WebApiTest
             var repo = new TodoRepository(todoContext);    
             
             services.AddSingleton<ITodoRepository>(repo);
+
+            services.AddCors();
             
             services.AddSwaggerGen(c =>
             {
@@ -45,14 +47,6 @@ namespace WebApiTest
                     Version = "v1",
                     Description = "Todo API tutorial using MongoDB",
                 });
-            });
-            
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader());
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -66,12 +60,12 @@ namespace WebApiTest
                 app.UseDeveloperExceptionPage();
             }
 
-
-
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors("CorsPolicy");
+            app.UseCors(
+                options => options.SetIsOriginAllowed(x => _ = true).AllowAnyMethod().AllowAnyHeader()
+            );
             app.UseAuthorization();
             
             app.UseSwagger();
