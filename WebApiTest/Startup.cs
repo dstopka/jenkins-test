@@ -49,11 +49,11 @@ namespace WebApiTest
             
             services.AddCors(options =>
             {
-                options.AddDefaultPolicy(
-                    builder =>
-                    {
-                        builder.WithOrigins("http://localhost:8888").AllowAnyHeader().AllowAnyMethod();
-                    });
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -67,12 +67,12 @@ namespace WebApiTest
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors();
+
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors("CorsPolicy");
             app.UseAuthorization();
             
             app.UseSwagger();
