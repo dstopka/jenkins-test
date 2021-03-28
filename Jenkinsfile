@@ -8,7 +8,7 @@ pipeline {
             steps {
                 dir('WebApiTest') {
                     script {
-                        docker.build("api-test:${env.BUILD_ID}", "-f ./Dockerfile.build .")
+                        docker.build("api-test", "-f ./Dockerfile.build .")
                     }
                 }
                 dir('ClientApp') {
@@ -17,13 +17,13 @@ pipeline {
             }
             post {
                 failure {
-                    echo 'This build has failed. See logs for details.'
+                    echo 'Build failed. See logs for details.'
                 }
             }
         }
         stage('Test') {
             steps {
-                sh "docker run api-test:${env.BUILD_ID}"
+                sh "docker run api-test"
             }
             post {
                 failure {
@@ -34,7 +34,7 @@ pipeline {
     }
     post {
         always {
-           sh "docker rmi -f api-test:${env.BUILD_ID}" 
+           sh "docker rmi -f $(docker images -f "dangling=true" -q)" 
         }
     }
 }
