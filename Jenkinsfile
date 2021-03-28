@@ -49,7 +49,7 @@ pipeline {
         stage('Deploy') {
             when {
                 expression {
-                    return ${ghprbTargetBranch} == 'develop'
+                    return ${env.ghprbTargetBranch} == 'develop'
                 }
             }
             steps {
