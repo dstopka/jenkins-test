@@ -24,7 +24,7 @@ pipeline {
                     steps {
                         dir('ClientApp') {
                             script {
-                                docker.build("ui-test", "-f ./Dockerfile .")
+                                docker.build("ui-test", "-f ./Dockerfile.build .")
                             }
                         }
                     }
@@ -48,7 +48,9 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                branch 'develop'
+                expression {
+                    return "${env.ghprbTargetBranch}" == "master"
+                }
             }
             steps {
                 sh 'docker-compose -f ./docker-compose-mongo.yaml down || true'
