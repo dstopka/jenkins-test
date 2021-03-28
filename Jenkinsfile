@@ -24,7 +24,7 @@ pipeline {
                     steps {
                         dir('ClientApp') {
                             script {
-                                docker.build("ui-test", "-f ./Dockerfile .")
+                                docker.build("ui-test", "-f ./Dockerfile.build .")
                             }
                         }
                     }
@@ -49,7 +49,7 @@ pipeline {
         stage('Deploy') {
             when {
                 expression {
-                    return "${env.ghprbTargetBranch}" == "develop"
+                    return "${env.ghprbTargetBranch}" == "master"
                 }
             }
             steps {
