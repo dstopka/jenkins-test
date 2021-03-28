@@ -34,7 +34,7 @@ pipeline {
     }
     post {
         always {
-           sh "docker rmi -f $(docker images -f "dangling=true" -q)" 
+           sh 'docker rmi -f $(docker images -f "dangling=true" -q)'
         }
     }
 }
