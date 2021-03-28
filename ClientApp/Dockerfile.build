@@ -1,0 +1,17 @@
+FROM node:14.2.0-alpine3.11 AS build
+
+WORKDIR /app
+
+RUN npm install -g @angular/cli@^10
+
+COPY package.json package-lock.json ./
+
+FROM build as dependencies
+
+RUN npm install
+
+FROM dependencies as test
+
+COPY . .
+RUN npm run build
+

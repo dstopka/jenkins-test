@@ -24,7 +24,7 @@ pipeline {
                     steps {
                         dir('ClientApp') {
                             script {
-                                docker.build("ui-test", "-f ./Dockerfile .")
+                                docker.build("ui-test", "-f ./Dockerfile.build .")
                             }
                         }
                     }
