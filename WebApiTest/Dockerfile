@@ -4,10 +4,11 @@ WORKDIR /app
 # Copy csproj and restore as distinct layers
 COPY *.sln .
 COPY WebApiTest/*.csproj ./WebApiTest/
+COPY Test/*.csproj ./Test/
 RUN dotnet restore
 
 # Copy everything else and build
-COPY ./WebApiTest/* ./
+COPY . ./
 RUN dotnet publish -c Release -o out
 
 # Build runtime image
