@@ -46,18 +46,6 @@ pipeline {
                 }
             }        
         }
-        stage('Deploy') {
-            when {
-                expression {
-                    return "${env.ghprbTargetBranch}" == "master"
-                }
-            }
-            steps {
-                sh 'docker-compose -f ./docker-compose-mongo.yaml down || true'
-                sh 'docker-compose -f ./docker-compose.yaml down || true'
-                sh 'docker-compose -f ./docker-compose-mongo.yaml -f ./docker-compose.yaml up -d --build'
-            }
-        }
     }
     post {
         always {
