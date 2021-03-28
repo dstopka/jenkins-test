@@ -5,19 +5,34 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            steps {
-                dir('WebApiTest') {
-                    script {
-                        docker.build("api-test", "-f ./Dockerfile.build .")
+            parallel {
+                stage('Build API') {
+                    steps {
+                        dir('WebApiTest') {
+                            script {
+                                docker.build("api-test", "-f ./Dockerfile.build .")
+                            }
+                        }
+                    }
+                    post {
+                        failure {
+                            echo('Building API failed. See logs for more details.')
+                        }
                     }
                 }
-                dir('ClientApp') {
-                    sh 'docker build --rm -t frontendapp .'
-                }
-            }
-            post {
-                failure {
-                    echo 'Build failed. See logs for details.'
+                stage('Build client') {
+                    steps {
+                        dir('WebApiTest') {
+                            script {
+                                docker.build("api-test", "-f ./Dockerfile.build .")
+                            }
+                        }
+                    }
+                    post {
+                        failure {
+                            echo('Building client failed. See logs for more details.')
+                        }
+                    }
                 }
             }
         }
@@ -27,14 +42,24 @@ pipeline {
             }
             post {
                 failure {
-                    echo 'Tests failed. See logs for details.'
+                    echo 'API tests failed. See logs for details.'
                 }
             }        
+        }
+        stage('Deploy') {
+            when {
+                branch 'develop'
+            }
+            steps {
+                sh 'docker-compose -f ./docker-compose-mongo.yaml down || true'
+                sh 'docker-compose -f ./docker-compose.yaml down || true'
+                sh 'docker-compose -f ./docker-compose-mongo.yaml -f ./docker-compose.yaml up -d --build'
+            }
         }
     }
     post {
         always {
-           sh 'docker rmi -f $(docker images -f "dangling=true" -q)'
+           sh 'docker system prune'
         }
     }
 }
