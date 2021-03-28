@@ -20,17 +20,17 @@ pipeline {
                         }
                     }
                 }
-                stage('Build client') {
+                stage('Build UI') {
                     steps {
-                        dir('WebApiTest') {
+                        dir('ClientApp') {
                             script {
-                                docker.build("api-test", "-f ./Dockerfile.build .")
+                                docker.build("ui-test", "-f ./Dockerfile .")
                             }
                         }
                     }
                     post {
                         failure {
-                            echo('Building client failed. See logs for more details.')
+                            echo('Building UI failed. See logs for more details.')
                         }
                     }
                 }
