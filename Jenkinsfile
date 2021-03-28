@@ -48,7 +48,9 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                branch 'develop'
+                expression {
+                    return ${ghprbTargetBranch} == 'develop'
+                }
             }
             steps {
                 sh 'docker-compose -f ./docker-compose-mongo.yaml down || true'
