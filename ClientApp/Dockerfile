@@ -1,14 +1,14 @@
-FROM node:14.2.0-alpine3.11 AS build
+FROM node:14.2.0-alpine3.11 AS base
 
 WORKDIR /app
 RUN npm install -g @angular/cli@^10
 COPY package.json package-lock.json ./
 
-FROM build as dependencies
+FROM base as dependencies
 
 RUN npm install
 
-FROM dependencies as test
+FROM dependencies as build
 
 COPY . .
 RUN npm run build --prod
