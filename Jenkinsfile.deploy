@@ -1,11 +1,42 @@
 pipeline {
   agent any
   stages {
+    stage('Build') {
+      parallel {
+        stage('Build API') {
+          steps {
+            dir('WebApiTest') {
+              script {
+                docker.build("app-api", "-f ./Dockerfile .")
+              }
+            }
+          }
+          post {
+            failure {
+              echo('Building API failed. See logs for more details.')
+            }
+          }
+        }
+        stage('Build UI') {
+          steps {
+            dir('ClientApp') {
+              script {
+                docker.build("app-ui", "-f ./Dockerfile .")
+              }
+            }
+          }
+          post {
+            failure {
+              echo('Building UI failed. See logs for more details.')
+            }
+          }
+        }
+      }
+    }
     stage('Deploy') {
       steps {
-        sh 'docker-compose -f ./docker-compose-mongo.yaml down || true'
-        sh 'docker-compose -f ./docker-compose.yaml down || true'
-        sh 'docker-compose -f ./docker-compose-mongo.yaml -f ./docker-compose.yaml up -d --build'
+          sh 'docker-compose -f ./docker-compose.yaml-f ./docker-compose-mongo.yaml down || true'
+          sh 'docker-compose -f ./docker-compose-mongo.yaml -f ./docker-compose.yaml up -d'
       }
     }
   }
