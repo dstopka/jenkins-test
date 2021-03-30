@@ -1,9 +1,6 @@
  version: '3.1'
  services:
   myapp_api:
-    build: 
-      context: ./WebApiTest/
-      dockerfile: Dockerfile
     image: app-api
     container_name: myapp_api
     restart: always
@@ -16,9 +13,6 @@
     networks:
       - webapp-network
   myapp_client:
-    build:
-      context: ./ClientApp/
-      dockerfile: Dockerfile
     image: app-ui
     container_name: myapp_ui
     restart: always
